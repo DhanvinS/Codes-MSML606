@@ -1,9 +1,4 @@
-class Node:
-    def ___init___(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+from Problem1 import exp_tree
+# using prev problems code 
 
 
-
-    
