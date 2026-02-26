@@ -25,3 +25,25 @@ def postorder_trav(root):
     result.append(root.value)
 
     return result
+
+# using inorder traversal here 
+# left -> root -> right
+def inorder_trav(root):
+
+    if root is None:
+        return []
+
+ 
+    if root.left is None and root.right is None:
+        return [root.value]
+
+    result = []
+
+    result.append("(")
+    result += inorder_trav(root.left)
+    result.append(root.value)
+    result += inorder_trav(root.right)
+    result.append(")")
+
+    return result
+
