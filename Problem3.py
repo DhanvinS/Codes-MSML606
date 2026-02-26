@@ -32,7 +32,7 @@ class Stack:
 
         return self.data[self.top]
     
-def evaluate_postfix(expression):
+def eval_postfix(expression):
     """
     Evaluating a postfix expression using a stack here
 
@@ -81,3 +81,7 @@ def evaluate_postfix(expression):
         raise ValueError("Invalid postfix expression")
 
     return stack.pop()
+
+if __name__ == "__main__":
+    expr = "5 1 2 + 4 * + 3 -"
+    print("Result:", eval_postfix(expr))
