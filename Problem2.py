@@ -4,7 +4,6 @@ from Problem1 import exp_tree
 # Using preorder traversal here
 # ie root -> left -> right
 def preorder_trav(root):
-
     if root is None:
         return []
 
@@ -14,3 +13,15 @@ def preorder_trav(root):
 
     return result
 
+# using postorder traversla here 
+# left -> right -> root
+def postorder_trav(root):
+    if root is None:
+        return []
+
+    result = []
+    result += postorder_trav(root.left)
+    result += postorder_trav(root.right)
+    result.append(root.value)
+
+    return result
