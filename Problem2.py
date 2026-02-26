@@ -47,3 +47,12 @@ def inorder_trav(root):
 
     return result
 
+# trying out a test case here
+if __name__ == "__main__":
+    postfix_input = ["3", "4", "+", "2", "*"]
+
+    root = exp_tree(postfix_input)
+
+    print("Prefix:", preorder_trav(root))
+    print("Infix:", inorder_trav(root))
+    print("Postfix:", postorder_trav(root))
