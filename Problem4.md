@@ -26,6 +26,6 @@ Negative Numbers:
 
 
 
-    **I took help of GPT for my GIT push/commits when i had edited the file in main github and it didnt coincide with my remote files I needed help to synch back up both of them Except that didnt use anywhere else
+    **I took help of AI for my GIT push/commits as when I had edited the file in main github and it didnt coincide with my remote files I needed help to synch back up both of them except that didnt use ai anywhere else
     
     I just used slides and my undergrad dsa notes to solve some parts of this assignment**
