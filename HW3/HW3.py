@@ -103,6 +103,17 @@ def measure_search_time(hashmap, keys):
 
     return avg_time
 
+
+# need to compute chain statistics so gonna create a method for that
+def chain_stats(hashmap):
+
+    lengths = [len(bucket) for bucket in hashmap.table]
+
+    avg_chain = sum(lengths) / len(lengths)
+    max_chain = max(lengths)
+
+    return avg_chain, max_chain
+    
 def run_experiments():
     # test across different table sizes and load factors
     
