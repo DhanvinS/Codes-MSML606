@@ -9,11 +9,20 @@ import random
 # Implement own hashing function using division/multiplication method
 class HashMap:
     def __init__(self, size=101):
-        pass
+        self.size = size
+        self.table = [[] for _ in range(size)]
 
-    # retrieve a value associated with the key
-    def search(self,key):
-        pass 
+    # here retrieving value associated with the key
+    def search(self, key):
+        index = self._hash(key)
+
+        bucket = self.table[index]
+
+        for k, v in bucket:
+            if k == key:
+                return v
+
+        return None
 
     # insert the key value pair into the hash tables
     def insert(self,key,value):
