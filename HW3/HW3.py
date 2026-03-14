@@ -25,12 +25,32 @@ class HashMap:
         return None
 
     # insert the key value pair into the hash tables
-    def insert(self,key,value):
-        pass 
+    def insert(self, key, value):
+        index = self._hash(key)
+
+        bucket = self.table[index]
+
+        # checking if key already exists
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                bucket[i] = (key, value)
+                return
+
+        bucket.append((key, value))
+
 
     # remove the key value pair from the hash table
-    def delete(self,key):
-        pass 
+    def delete(self, key):
+        index = self._hash(key)
+
+        bucket = self.table[index]
+
+        for i, (k, v) in enumerate(bucket):
+            if k == key:
+                bucket.pop(i)
+                return True
+
+        return False 
 
     # optional for open addressing collision method
     # if you choose chaining, don't forget to discuss it in the report
