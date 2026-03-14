@@ -153,19 +153,64 @@ def run_experiments():
     return results
 
 
-# Plottting load factor vs search time
-def plot_results(results):
+# Plottting stuff here
+def plot_load_factor(results):
 
-    load_factors = [r[1] for r in results if r[2] == "uniform"]
-    search_times = [r[3] for r in results if r[2] == "uniform"]
+    load_factors = []
+    search_times = []
+
+    for r in results:
+        size, lf, dist, success_time, fail_time, avg_chain, max_chain = r
+
+        if dist == "uniform" and size == 101:
+            load_factors.append(lf)
+            search_times.append(success_time)
 
     plt.figure()
     plt.plot(load_factors, search_times, marker='o')
 
     plt.xlabel("Load Factor")
     plt.ylabel("Average Search Time")
-    plt.title("Load Factor vs Search Time (Uniform Distribution)")
+    plt.title("Load Factor vs Search Time")
 
     plt.grid(True)
     plt.show()
+
+
+def plot_distribution(results):
+
+    dist_times = {"uniform": [], "skewed": [], "sequential": []}
+
+    for r in results:
+        _, _, dist, success_time, _, _, _ = r
+        dist_times[dist].append(success_time)
+
+    labels = []
+    values = []
+
+    for d in dist_times:
+        labels.append(d)
+        values.append(sum(dist_times[d]) / len(dist_times[d]))
+
+    plt.figure()
+    plt.bar(labels, values)
+
+    plt.xlabel("Key Distribution")
+    plt.ylabel("Average Search Time")
+    plt.title("Search Time Across Distributions")
+
+    plt.show()
+
+
+
+
+
+# running everythuing here
+if __name__ == "__main__":
+
+    results = run_experiments()
+
+    plot_load_factor(results)
+
+    plot_distribution(results)
     
