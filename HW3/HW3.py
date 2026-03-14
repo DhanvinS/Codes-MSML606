@@ -116,4 +116,38 @@ def chain_stats(hashmap):
     
 def run_experiments():
     # test across different table sizes and load factors
+    table_sizes = [101, 503, 1009]
+    load_factors = [0.5, 0.75, 1.0, 1.5]
+
+    results = []
+
+    for size in table_sizes:
+
+        for lf in load_factors:
+
+            n = int(size * lf)
+
+            keys = generate_keys("uniform", n)
+
+            hm = HashMap(size)
+
+            for k in keys:
+                hm.insert(k, k)
+
+            # successful searches
+            search_keys = random.sample(keys, min(100, len(keys)))
+
+            time_taken = measure_search_time(hm, search_keys)
+
+            avg_chain, max_chain = chain_stats(hm)
+
+            results.append((size, lf, time_taken, avg_chain, max_chain))
+
+            print("Table Size:", size,
+                  "Load Factor:", lf,
+                  "Search Time:", time_taken,
+                  "Avg Chain:", avg_chain,
+                  "Max Chain:", max_chain)
+
+    return results
     
