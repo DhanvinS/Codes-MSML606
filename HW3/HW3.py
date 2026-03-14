@@ -3,6 +3,7 @@
 
 import time
 import random
+import matplotlib.pyplot as plt
 
 # Implement HashMap in this class
 # Do not use built in dictionary
@@ -77,7 +78,17 @@ class HashMap:
 
 def generate_keys(distribution, n):
     # uniform, skewed, or sequential
-    pass
+    if distribution == "uniform":
+        return [random.randint(1, 1000000) for _ in range(n)]
+
+    elif distribution == "skewed":
+        return [int(random.expovariate(0.01)) for _ in range(n)]
+
+    elif distribution == "sequential":
+        return list(range(n))
+
+    else:
+        return []
 
 def measure_search_time(hashmap, keys):
     # use time.perf_counter()
