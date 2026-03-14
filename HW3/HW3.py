@@ -91,9 +91,18 @@ def generate_keys(distribution, n):
         return []
 
 def measure_search_time(hashmap, keys):
-    # use time.perf_counter()
-    pass
+     # use time.perf_counter()
+    start = time.perf_counter()
+
+    for key in keys:
+        hashmap.search(key)
+
+    end = time.perf_counter()
+
+    avg_time = (end - start) / len(keys)
+
+    return avg_time
 
 def run_experiments():
     # test across different table sizes and load factors
-    pass
+    
