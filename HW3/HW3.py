@@ -149,5 +149,23 @@ def run_experiments():
                   "Avg Chain:", avg_chain,
                   "Max Chain:", max_chain)
 
+
     return results
+
+
+# Plottting load factor vs search time
+def plot_results(results):
+
+    load_factors = [r[1] for r in results if r[2] == "uniform"]
+    search_times = [r[3] for r in results if r[2] == "uniform"]
+
+    plt.figure()
+    plt.plot(load_factors, search_times, marker='o')
+
+    plt.xlabel("Load Factor")
+    plt.ylabel("Average Search Time")
+    plt.title("Load Factor vs Search Time (Uniform Distribution)")
+
+    plt.grid(True)
+    plt.show()
     
