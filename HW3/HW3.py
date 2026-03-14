@@ -52,8 +52,7 @@ class HashMap:
 
         return False 
 
-    # optional for open addressing collision method
-    # if you choose chaining, don't forget to discuss it in the report
+    # optional for open addressing collision method so not using this
     def dynamicResizing(self):
         pass
 
@@ -61,7 +60,17 @@ class HashMap:
     def _hash(self, key, method="division"):
         # Implement division method
         # Implement multiplication method
-        pass
+        # converting key into integer
+        if isinstance(key, str):
+            key = sum(ord(c) for c in key)
+
+        if method == "division":
+            return key % self.size
+
+        elif method == "multiplication":
+            A = 0.6180339887
+            return int(self.size * ((key * A) % 1))
+
 
 
 # Problem 2: Performance Analysis
