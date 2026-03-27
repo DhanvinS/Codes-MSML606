@@ -31,3 +31,41 @@ df['n_members'] = df['n_members'].fillna('0')
 print("Cleaned rows:", len(df))
 df.head()
 
+class TreeNode:
+    def __init__(self, name, members):
+        self.name = name
+        self.members = members
+        self.left = None
+        self.right = None
+
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, root, name, members):
+        if root is None:
+            return TreeNode(name, members)
+
+        if name < root.name:
+            root.left = self.insert(root.left, name, members)
+        elif name > root.name:
+            root.right = self.insert(root.right, name, members)
+
+        return root
+
+    def search(self, root, name):
+        if root is None or root.name == name:
+            return root
+
+        if name < root.name:
+            return self.search(root.left, name)
+        else:
+            return self.search(root.right, name)
+
+    def inorder(self, root, result):
+        if root:
+            self.inorder(root.left, result)
+            result.append((root.name, root.members))
+            self.inorder(root.right, result)
+
+
